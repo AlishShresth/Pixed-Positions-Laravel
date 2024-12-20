@@ -81,7 +81,7 @@ class JobController extends Controller
                 'jobs' => $job
             ]);
         } catch (\Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 400);
+            return response()->json(['status' => 'fail', 'error' => $e->getMessage()], 400);
         }
     }
     public function show(Job $job)
@@ -94,7 +94,7 @@ class JobController extends Controller
                 'job' => $job
             ]);
         } catch (\Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 400);
+            return response()->json(['status' => 'fail', 'error' => $e->getMessage()], 400);
         }
     }
 
@@ -144,7 +144,7 @@ class JobController extends Controller
                 'job' => $job
             ]);
         } catch (\Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 400);
+            return response()->json(['status' => 'fail', 'error' => $e->getMessage()], 400);
         }
     }
 
@@ -156,7 +156,7 @@ class JobController extends Controller
             // $job->delete();
             return ['message' => 'Job Deleted'];
         } catch (\Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 400);
+            return response()->json(['status' => 'fail', 'error' => $e->getMessage()], 400);
         }
     }
 }

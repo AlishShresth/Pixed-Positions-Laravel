@@ -20,10 +20,11 @@ class SearchController extends Controller
             // return view('results',['jobs'=>$jobs]);
             return response()->json([
                 'status' => 'success',
-                'jobs' => $jobs
-            ]);
+                'jobs' => $jobs,
+                'message' => $jobs->isEmpty() ? 'No jobs found.' : null,
+            ], 200);
         } catch (\Exception $e) {
-            return response($e, status: 400);
+            return response()->json(['status' => 'fail', 'error' => $e->getMessage()], 400);
         }
     }
 }
