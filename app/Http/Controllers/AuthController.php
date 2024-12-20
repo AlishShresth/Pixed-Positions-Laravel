@@ -80,7 +80,7 @@ class AuthController extends Controller
             $user = User::where('email', $request->email)->first();
 
             if (!$user || !Hash::check($request->password, $user->password)) {
-                return ['error' => 'Sorry, the provided credentials do not match.'];
+                return response()->json(['status' => 'fail', 'error' => 'Sorry, the provided credentials do not match.'], 400);
             }
 
             $token = $user->createToken($user->name);
