@@ -11,8 +11,8 @@ class TagController extends Controller
     {
         // return view('results', ['jobs' => $tag->jobs]);
         try {
-
-            return response()->json(['status' => 'success', 'jobs' => $tag->jobs]);
+            $jobs = $tag->jobs()->with(['employer', 'tags'])->get();
+            return response()->json(['status' => 'success', 'jobs' => $jobs]);
         } catch (\Exception $e) {
             return response()->json(['status' => 'fail', 'error' => $e->getMessage()], 400);
         }
