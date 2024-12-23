@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 
 class TagController extends Controller
 {
-    public function __invoke(Tag $tag){
-       return view('results', ['jobs' => $tag->jobs]);
+    public function __invoke(Tag $tag)
+    {
+        // return view('results', ['jobs' => $tag->jobs]);
+        return response()->json(['status' => 'success', 'jobs' => $tag->jobs]);
     }
 }
